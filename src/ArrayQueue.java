@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
     private int size=0;
     private int head=0;
@@ -24,6 +26,7 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
         return (E) removed;
     }
     public E peek(){
+        if (isEmpty()) {throw new EmptyQueueException();}
         return (E) this.arr[head];
     }
 
@@ -37,6 +40,11 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
 
     @Override
     public ArrayQueue<E> clone() {
+        return null;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
         return null;
     }
 }
