@@ -5,6 +5,8 @@ import java.util.Iterator;
 public class ToDoList implements Cloneable,TaskIterable {
     private ArrayList<Task> tasksList;
     private int currentSize=0;
+    private boolean bool=false;
+    private Date date=null;
 
     public ToDoList() {
         this.tasksList = new ArrayList<Task>();
@@ -113,13 +115,13 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     @Override
     public Iterator<Task> iterator() {
-        ToDoListIterator toDoListIterator = new ToDoListIterator(this,null,false);
+        ToDoListIterator toDoListIterator = new ToDoListIterator(this,this.date,this.bool);
         return toDoListIterator;
     }
 
-    public Iterator<Task> setScanningDueDate(Date date) {
-        ToDoListIterator iterator= new ToDoListIterator(this, date, true);
-        return iterator;
+    public void setScanningDueDate(Date date) {
+        this.bool=true;
+        this.date=date;
     }
 
 }
