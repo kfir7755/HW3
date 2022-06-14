@@ -16,7 +16,7 @@ public class ArrayQueueIterator<E extends Cloneable> implements Iterator {
 
     @Override
     public boolean hasNext() {
-        if (currentSize<this.size && this.arr[(this.head+this.currentSize)%this.maxCapacity]!=null) {
+        if (this.currentSize<this.size && this.arr[(this.head+this.currentSize)%this.maxCapacity]!=null) {
             return true;
         }
         this.currentSize=0;

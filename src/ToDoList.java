@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 
-public class ToDoList {
+public class ToDoList implements TaskIterable {
     private ArrayList<Task> tasksList;
     private int currentSize;
 
@@ -9,6 +11,15 @@ public class ToDoList {
         currentSize=0;
 
     }
+
+    public ArrayList<Task> getTasksList() {
+        return tasksList;
+    }
+
+    public int getCurrentSize() {
+        return currentSize;
+    }
+
     public void addTask(Task task){
         boolean isAdded=false;
         if (this.currentSize==0){
@@ -35,6 +46,22 @@ public class ToDoList {
                 this.tasksList.add(task);
                 currentSize++;
             }
+        }
+    }
+
+    @Override
+    public Iterator<Task> iterator() {
+        ToDoListIterator toDoListIterator= new ToDoListIterator(this);
+        return toDoListIterator;
+    }
+
+    public ToDoList setScanningDueDate(Date date){
+        if (date==null){
+
+
+        }
+        else {
+
         }
     }
 }
