@@ -24,6 +24,7 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
         Cloneable removed =this.arr[head];
         this.arr[this.head]=null;
         this.head=(this.head+1)%this.maxCapacity;
+        this.size--;
         return (E) removed;
     }
     public E peek(){
@@ -46,7 +47,7 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
 
     @Override
     public Iterator<E> iterator() {
-        Iterator<E> iterator = new ArrayQueueIterator(this.head,this.size,this.arr);
+        Iterator<E> iterator = new ArrayQueueIterator(this);
         return iterator;
     }
 }
