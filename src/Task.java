@@ -1,3 +1,5 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Task implements Cloneable {
@@ -9,8 +11,12 @@ public class Task implements Cloneable {
         this.date = date;
     }
 
-    public Date getDate() {
+    public Date getDueDate() {
         return date;
+    }
+
+    public void setDueDate(Date date) {
+        this.date = date;
     }
 
     public String getDescription() {
@@ -19,6 +25,7 @@ public class Task implements Cloneable {
 
     @Override
     public boolean equals(Object obj) {
+        if(obj==null) {return false;}
         if (!(obj instanceof Task)){
             return false;
         }
@@ -35,7 +42,10 @@ public class Task implements Cloneable {
 
     @Override
     public String toString(){
-        return "("+this.description + "," + this.date + ")";
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        String strDate = dateFormat.format(date);
+
+        return "("+this.description + "," + strDate + ")";
     }
 
     @Override

@@ -4,12 +4,10 @@ import java.util.Iterator;
 
 public class ToDoList implements Cloneable,TaskIterable {
     private ArrayList<Task> tasksList;
-    private int currentSize;
+    private int currentSize=0;
 
     public ToDoList() {
         this.tasksList = new ArrayList<Task>();
-        currentSize = 0;
-
     }
 
     //throws
@@ -20,17 +18,18 @@ public class ToDoList implements Cloneable,TaskIterable {
             currentSize++;
             isAdded = true;
         } else {
-            for (int i = 0; i < currentSize; i++) {
-                if (task.getDate().compareTo(this.tasksList.get(i).getDate()) < 0) {
+            int size=this.currentSize;
+            for (int i = 0; i <size ; i++) {
+                if (task.getDueDate().compareTo(this.tasksList.get(i).getDueDate()) < 0 && isAdded==false) {
                     this.tasksList.add(i, task);
                     currentSize++;
                     isAdded = true;
-                } else if (task.getDate().compareTo(this.tasksList.get(i).getDate()) == 0) {
+                } else if (task.getDueDate().compareTo(this.tasksList.get(i).getDueDate()) == 0  && isAdded==false) {
                     if (task.getDescription().compareTo(this.tasksList.get(i).getDescription()) < 0) {
                         this.tasksList.add(i, task);
                         currentSize++;
                         isAdded = true;
-                    } else if (task.getDescription().compareTo(this.tasksList.get(i).getDescription()) == 0) {
+                    } else if (task.equals(this.tasksList.get(i))) {
                         throw new TaskAlreadyExistsException();
                     }
                 }
@@ -62,6 +61,7 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     @Override
     public boolean equals(Object object) {
+        if(object==null) {return false;}
         if (!(object instanceof ToDoList)) {
             return false;
         }
@@ -96,15 +96,13 @@ public class ToDoList implements Cloneable,TaskIterable {
         return toDoListIterator;
     }
 
-    public ToDoList setScanningDueDate(Date date) {
-        if (date == null) {
-
-
-        } else {
-
-        }
-    }
-
-
+//    public ToDoList setScanningDueDate(Date date) {
+//        if (date == null) {
+//
+//
+//        } else {
+//
+//        }
+//    }
 
 }
