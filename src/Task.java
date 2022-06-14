@@ -39,8 +39,12 @@ public class Task implements Cloneable {
     }
 
     @Override
-    public Task clone(){
-        Task task= new Task(this.description, new Date(this.date.getTime()));
-        return task;
+    public Task clone() {
+        try {
+            Task task = new Task(this.description, new Date(this.date.getTime()));
+            return task;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
