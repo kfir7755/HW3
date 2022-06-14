@@ -51,6 +51,16 @@ public class ToDoList implements Cloneable,TaskIterable {
     }
 
     @Override
+    public String toString() {
+        String str="[";
+        for (int i = 0; i <this.currentSize ; i++) {
+            str+=this.tasksList.get(i).toString();
+        }
+        str+="]";
+        return str;
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (!(object instanceof ToDoList)) {
             return false;
