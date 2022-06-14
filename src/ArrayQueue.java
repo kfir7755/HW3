@@ -47,7 +47,6 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
             ArrayQueue aq = new ArrayQueue(this.maxCapacity);
             aq.head=this.head;
             aq.size=this.size;
-            int currentElement=0;
             for (int i=0; i<this.size;i++) {
                 aq.arr[(aq.head+i)%aq.maxCapacity]= (Cloneable) MyCloneable.class.getMethod("clone")
                         .invoke(this.arr[(head+i)%aq.maxCapacity]);
