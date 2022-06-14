@@ -113,13 +113,13 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     @Override
     public Iterator<Task> iterator() {
-        ToDoListIterator toDoListIterator = new ToDoListIterator(this);
+        ToDoListIterator toDoListIterator = new ToDoListIterator(this,null,false);
         return toDoListIterator;
     }
 
     public Iterator<Task> setScanningDueDate(Date date) {
-            Iterator<Task> iterator= new ScansToDoListIterator(this, date);
-            return iterator;
+        ToDoListIterator iterator= new ToDoListIterator(this, date, true);
+        return iterator;
     }
 
 }
