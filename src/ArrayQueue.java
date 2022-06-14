@@ -45,7 +45,7 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
     public ArrayQueue<E> clone() {
         try {
             ArrayQueue aq = new ArrayQueue(this.maxCapacity);
-            if (this.size<=0) {
+            if (this.size==0) {
                 return aq;
             }
             else{
