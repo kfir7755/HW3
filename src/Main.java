@@ -251,18 +251,18 @@ public class Main {
         }
 
         System.out.println("After initial scanning\n");
-//
-//        int i = 1;
-//        for (Date date : dates) {
-//            System.out.println("Starting scan number " + i);
-//            tdl.setScanningDueDate(date);
-//            for (Task t : tdl) {
-//                System.out.println(t);
-//                System.out.println("-----------------------------------");
-//            }
-//            System.out.println("After scan number " + i++ + "\n");
-//        }
-//
-//        System.out.println("Done scanning");
+
+        int i = 1;
+        for (Date date : dates) {
+            System.out.println("Starting scan number " + i);
+            tdl.setScanningDueDate(date);
+            for (Task t : tdl) {
+                System.out.println(t);
+                System.out.println("-----------------------------------");
+            }
+            System.out.println("After scan number " + i++ + "\n");
+        }
+
+        System.out.println("Done scanning");
     }
 }

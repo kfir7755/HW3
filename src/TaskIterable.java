@@ -1,5 +1,6 @@
 import java.util.Date;
+import java.util.Iterator;
 
 public interface TaskIterable extends Iterable<Task> {
-//    public ToDoList setScanningDueDate(Date date);
+    public Iterator<Task> setScanningDueDate(Date date);
 }
