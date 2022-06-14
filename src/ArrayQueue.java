@@ -1,3 +1,4 @@
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -14,7 +15,7 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
     }
 
     public void enqueue(E element){
-        if (this.size==this.maxCapacity) { throw new QueueException();}
+        if (this.size==this.maxCapacity) { throw new QueueOverflowException();}
         this.arr[(this.head+this.size)%this.maxCapacity]=element;
         this.size++;
     }
@@ -42,7 +43,19 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
 
     @Override
     public ArrayQueue<E> clone() {
-        return null;
+        try {
+            ArrayQueue aq = new ArrayQueue(this.maxCapacity);
+            aq.head=this.head;
+            aq.size=this.size;
+            int currentElement=0;
+            for (int i=0; i<this.size;i++) {
+                aq.arr[(aq.head+i)%aq.maxCapacity]= (Cloneable) MyCloneable.class.getMethod("clone")
+                        .invoke(this.arr[(head+i)%aq.maxCapacity]);
+            }
+            return aq;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
