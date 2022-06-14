@@ -9,6 +9,14 @@ public class Task implements Cloneable {
         this.date = date;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Task)){
@@ -18,14 +26,6 @@ public class Task implements Cloneable {
             return true;
         }
         else return false;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     @Override
@@ -40,6 +40,7 @@ public class Task implements Cloneable {
 
     @Override
     public Task clone(){
-        Task task= new Task(this.description, this.date);
+        Task task= new Task(this.description, new Date(this.date.getTime()));
+        return task;
     }
 }

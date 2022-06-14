@@ -34,7 +34,7 @@ class MyCloneable implements Cloneable {
 public class Main {
     public static void main(String[] args) {
         testPartA();
-        //testPartB();
+        testPartB();
     }
 
     /**
@@ -144,16 +144,15 @@ public class Main {
     /**
      * Tests for part B.
      */
-//    private static void testPartB() {
+    private static void testPartB() {
 //        ToDoList l1 = new ToDoList();
 //        for (Task t : l1) {
 //            System.out.println("You should not reach here!");
 //        }
-//
-//        Task t1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.APRIL, 13));
-//        Task t2 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.MAY, 10));
-//        Task t3 = new Task("Software Engineering HW2", new Date(2022 - 1900, Calendar.MAY, 25));
-//        Task t4 = new Task("Software Engineering HW3", new Date(2022 - 1900, Calendar.JUNE, 16));
+        Task t1 = new Task("Software Engineering HW0", new Date(2022 - 1900, Calendar.APRIL, 13));
+        Task t2 = new Task("Software Engineering HW1", new Date(2022 - 1900, Calendar.MAY, 10));
+        Task t3 = new Task("Software Engineering HW2", new Date(2022 - 1900, Calendar.MAY, 25));
+        Task t4 = new Task("Software Engineering HW3", new Date(2022 - 1900, Calendar.JUNE, 16));
 //
 //        l1.addTask(t1);
 //        l1.addTask(t4);
@@ -265,5 +264,5 @@ public class Main {
 //        }
 //
 //        System.out.println("Done scanning");
-//    }
+    }
 }
