@@ -20,6 +20,14 @@ public class Task implements Cloneable {
         else return false;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     @Override
     public int hashCode() {
         return this.description.hashCode();
