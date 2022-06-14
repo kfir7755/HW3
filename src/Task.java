@@ -44,8 +44,8 @@ public class Task implements Cloneable {
     public String toString(){
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         String strDate = dateFormat.format(date);
-
-        return "("+this.description + "," + strDate + ")";
+        String toReturn=this.description + ", " + strDate;
+        return toReturn;
     }
 
     @Override

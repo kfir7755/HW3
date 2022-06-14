@@ -10,36 +10,47 @@ public class ToDoList implements Cloneable,TaskIterable {
         this.tasksList = new ArrayList<Task>();
     }
 
-    //throws
-    public void addTask(Task task) {
-        boolean isAdded = false;
-        if (this.currentSize == 0) {
-            this.tasksList.add(task);
-            currentSize++;
-            isAdded = true;
-        } else {
-            int size=this.currentSize;
-            for (int i = 0; i <size ; i++) {
-                if (task.getDueDate().compareTo(this.tasksList.get(i).getDueDate()) < 0 && isAdded==false) {
-                    this.tasksList.add(i, task);
-                    currentSize++;
-                    isAdded = true;
-                } else if (task.getDueDate().compareTo(this.tasksList.get(i).getDueDate()) == 0  && isAdded==false) {
-                    if (task.getDescription().compareTo(this.tasksList.get(i).getDescription()) < 0) {
-                        this.tasksList.add(i, task);
-                        currentSize++;
-                        isAdded = true;
-                    } else if (task.equals(this.tasksList.get(i))) {
-                        throw new TaskAlreadyExistsException();
-                    }
-                }
-            }
-            if (isAdded == false) {
-                this.tasksList.add(task);
-                currentSize++;
+    public void addTask(Task other) {
+        for (Task task :this){
+            if (other.hashCode()==task.hashCode()) {
+                throw new TaskAlreadyExistsException();
             }
         }
+        this.tasksList.add(other);
+            currentSize++;
     }
+
+
+    //throws
+//    public void addTask(Task task) {
+//        boolean isAdded = false;
+//        if (this.currentSize == 0) {
+//            this.tasksList.add(task);
+//            currentSize++;
+//            isAdded = true;
+//        } else {
+//            int size=this.currentSize;
+//            for (int i = 0; i <size ; i++) {
+//                if (task.getDueDate().compareTo(this.tasksList.get(i).getDueDate()) < 0 && isAdded==false) {
+//                    this.tasksList.add(i, task);
+//                    currentSize++;
+//                    isAdded = true;
+//                } else if (task.getDueDate().compareTo(this.tasksList.get(i).getDueDate()) == 0  && isAdded==false) {
+//                    if (task.getDescription().compareTo(this.tasksList.get(i).getDescription()) < 0) {
+//                        this.tasksList.add(i, task);
+//                        currentSize++;
+//                        isAdded = true;
+//                    } else if (task.equals(this.tasksList.get(i))) {
+//                        throw new TaskAlreadyExistsException();
+//                    }
+//                }
+//            }
+//            if (isAdded == false) {
+//                this.tasksList.add(task);
+//                currentSize++;
+//            }
+//        }
+//    }
 
     public ArrayList<Task> getTasksList() {
         return tasksList;
@@ -53,7 +64,12 @@ public class ToDoList implements Cloneable,TaskIterable {
     public String toString() {
         String str="[";
         for (int i = 0; i <this.currentSize ; i++) {
-            str+=this.tasksList.get(i).toString();
+            if(i==this.currentSize-1) {
+                str+="("+this.tasksList.get(i).toString()+")";
+            }
+            else {
+                str += "("+this.tasksList.get(i).toString()+ ")" + ", ";
+            }
         }
         str+="]";
         return str;
