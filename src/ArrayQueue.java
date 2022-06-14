@@ -1,10 +1,11 @@
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
-    private int size=0;
-    private int head=0;
-    private Cloneable[] arr;
-    private final int maxCapacity;
+    protected int size=0;
+    protected int head=0;
+    protected Cloneable[] arr;
+    protected final int maxCapacity;
 
     public ArrayQueue( int maxCapacity) {
             if (maxCapacity < 0) {throw new NegativeCapacityException();}
@@ -45,6 +46,7 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        Iterator<E> iterator = new ArrayQueueIterator(this.head,this.size,this.arr);
+        return iterator;
     }
 }
