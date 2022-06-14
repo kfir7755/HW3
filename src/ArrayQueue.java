@@ -45,11 +45,16 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
     public ArrayQueue<E> clone() {
         try {
             ArrayQueue aq = new ArrayQueue(this.maxCapacity);
-            aq.head=this.head;
-            aq.size=this.size;
-            for (int i=0; i<this.size;i++) {
-                aq.arr[(aq.head+i)%aq.maxCapacity]= (Cloneable) MyCloneable.class.getMethod("clone")
-                        .invoke(this.arr[(head+i)%aq.maxCapacity]);
+            if (this.size<=0) {
+                return aq;
+            }
+            else{
+                aq.head=this.head;
+                aq.size=this.size;
+                for (int i=0; i<this.size;i++) {
+                    aq.arr[(aq.head + i) % aq.maxCapacity] = (Cloneable) this.arr[head].getClass()
+                            .getMethod("clone").invoke(this.arr[(head + i) % aq.maxCapacity]);
+                }
             }
             return aq;
         } catch (Exception e) {
