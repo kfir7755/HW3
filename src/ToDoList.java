@@ -40,7 +40,7 @@ public class ToDoList implements Cloneable,TaskIterable {
                         this.tasksList.add(i, task);
                         currentSize++;
                         isAdded = true;
-                    } else if (task.equals(this.tasksList.get(i))) {
+                    } else if (task.hashCode()==this.tasksList.get(i).hashCode()) {
                         throw new TaskAlreadyExistsException();
                     }
                 }
