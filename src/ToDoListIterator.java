@@ -32,7 +32,7 @@ private boolean bool;
             return this.currentIndex < this.size;
         }
         else return this.currentIndex < this.size && sortedTasksList.get(currentIndex).getDueDate()
-                .compareTo(this.date) < 0;
+                .compareTo(this.date) <= 0;
     }
     @Override
     public Task next() {
