@@ -22,8 +22,10 @@ public class ToDoList implements Cloneable,TaskIterable {
             currentSize++;
     }
 
-
-    //throws
+    /**
+     * @throws TaskAlreadyExistsException if the task to be added is already exists
+     * @param task
+     */
     public void addTaskForScanning(Task task) {
         boolean isAdded = false;
         if (this.currentSize == 0) {
@@ -33,16 +35,21 @@ public class ToDoList implements Cloneable,TaskIterable {
         } else {
             int size=this.currentSize;
             for (int i = 0; i <size ; i++) {
+                //for each task
                 if (task.getDueDate().compareTo(this.tasksList.get(i).getDueDate()) < 0 && isAdded==false) {
+                    //comparing dates
                     this.tasksList.add(i, task);
                     currentSize++;
                     isAdded = true;
                 } else if (task.getDueDate().compareTo(this.tasksList.get(i).getDueDate()) == 0  && isAdded==false) {
+                    //comparing dates
                     if (task.getDescription().compareTo(this.tasksList.get(i).getDescription()) < 0) {
+                        //comparing discriptions
                         this.tasksList.add(i, task);
                         currentSize++;
                         isAdded = true;
                     } else if (task.hashCode()==this.tasksList.get(i).hashCode()) {
+                        //if the same task throw exeption
                         throw new TaskAlreadyExistsException();
                     }
                 }
@@ -62,6 +69,10 @@ public class ToDoList implements Cloneable,TaskIterable {
         return currentSize;
     }
 
+    /**
+     * ovveride to toString in ToDoList
+     * @return
+     */
     @Override
     public String toString() {
         String str="[";
@@ -77,6 +88,11 @@ public class ToDoList implements Cloneable,TaskIterable {
         return str;
     }
 
+    /**
+     * checks if 2 ToDoLists are equals
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         if(object==null) {return false;}
@@ -100,6 +116,10 @@ public class ToDoList implements Cloneable,TaskIterable {
 
     }
 
+    /**
+     * @throws  Exception if clone does not work
+     * @return
+     */
     @Override
     public ToDoList clone() {
         try {

@@ -18,6 +18,11 @@ private boolean bool;
         this.bool=bool;
     }
 
+    /**
+     * sorting a task arraylist
+     * @param tasksList
+     * @return
+     */
     private ArrayList<Task> sortList(ArrayList<Task> tasksList) {
         ToDoList sortedToDoList= new ToDoList();
         for (Task task : tasksList) {

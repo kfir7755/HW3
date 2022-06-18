@@ -74,6 +74,7 @@ public class ArrayQueue<E extends MyCloneable> implements Queue<E> {
 
     /**
      *  a function the makes a deep cloning of the Queue
+     * @throws Exception that might occur while cloning
      * @return the deep copy of the clone
      */
     @Override
